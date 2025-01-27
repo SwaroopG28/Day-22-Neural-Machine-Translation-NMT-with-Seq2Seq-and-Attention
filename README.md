@@ -1,19 +1,38 @@
 # Neural Machine Translation (NMT) with Seq2Seq and Attention
 
 ## **Overview**
-This project implements a **Neural Machine Translation (NMT)** system to translate simple sentences from **English** to **French** using a **Sequence-to-Sequence (Seq2Seq)** architecture with an **LSTM-based encoder-decoder model**. While this example uses a small custom dataset, the architecture can be extended to larger and more complex datasets like **European Parliamentary Proceedings Parallel Corpus** or **OpenSubtitles**.
+This project demonstrates how to build a **Neural Machine Translation (NMT)** system using a **Sequence-to-Sequence (Seq2Seq)** model with an LSTM-based encoder-decoder architecture. The model is trained to translate simple sentences from **English** to **French**. 
 
 ---
 
-## **How It Works**
-1. **Encoder**:
-   - Converts input English sentences into fixed-size context vectors using an LSTM network.
-2. **Decoder**:
-   - Uses the context vectors from the encoder to generate French translations word by word.
-3. **Dataset**:
-   - A small, custom English-to-French dataset with simple sentences.
-4. **Training**:
-   - The model is trained using teacher forcing with padded input sequences.
-5. **Inference**:
-   - During inference, the decoder generates the translation one token at a time using the context vector from the encoder.
+## **Dataset**
+This project uses a small custom dataset of English-to-French sentence pairs:
 
+| **English**            | **French**          |
+|-------------------------|---------------------|
+| hello                  | bonjour             |
+| how are you            | comment ça va       |
+| good morning           | bonjour             |
+| thank you              | merci               |
+| good night             | bonne nuit          |
+| see you later          | à bientôt           |
+| i love you             | je t'aime           |
+
+Feel free to expand this dataset to improve the model's performance.
+
+---
+
+## **Model Architecture**
+1. **Encoder**:
+   - Converts input English sentences into fixed-size context vectors.
+   - Layers:
+     - Embedding Layer: Maps input tokens to dense vector representations.
+     - LSTM Layer: Processes sequences and outputs context vectors (hidden and cell states).
+2. **Decoder**:
+   - Uses context vectors from the encoder to generate French translations.
+   - Layers:
+     - Embedding Layer: Maps target tokens to dense vector representations.
+     - LSTM Layer: Generates predictions one token at a time.
+     - Dense Layer: Applies a softmax activation to output probabilities for each token.
+3. **Training Objective**:
+   - The model is trained to minimize categorical cross-entropy loss using teacher forcing.
