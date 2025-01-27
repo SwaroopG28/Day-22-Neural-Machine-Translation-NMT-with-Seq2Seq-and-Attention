@@ -4,7 +4,16 @@
 This project demonstrates how to build a **Neural Machine Translation (NMT)** system using a **Sequence-to-Sequence (Seq2Seq)** model with an LSTM-based encoder-decoder architecture. The model is trained to translate simple sentences from **English** to **French**. 
 
 ---
-
+## **How It Works**
+1. **Encoder**:
+   - Converts input English sentences into fixed-size context vectors using an LSTM network.
+2. **Decoder**:
+   - Generates French translations word by word using the context vectors from the encoder.
+3. **Attention Mechanism**:
+   - While not included in this basic implementation, attention can be added for improved accuracy.
+4. **Inference**:
+   - During testing, the decoder generates the translation one token at a time.
+---
 ## **Dataset**
 This project uses a small custom dataset of English-to-French sentence pairs:
 
